@@ -39,6 +39,7 @@ $VMHosts = Get-Cluster $vmcluster | Get-VMHost
 
 foreach($VMhost in $VMhosts)   
 {
+    sleep 60
     Write-Host REBOOTING $VMhost.Name
     Set-vmhost $VMhost -State Maintenance -Evacuate -VsanDataMigrationMode EnsureAccessibility
 
