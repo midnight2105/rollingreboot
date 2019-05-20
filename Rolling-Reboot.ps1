@@ -39,7 +39,7 @@ $VMHosts = Get-Cluster $vmcluster | Get-VMHost
 
 foreach($VMhost in $VMhosts)   
 {
-    sleep 60
+    
     Write-Host REBOOTING $VMhost.Name
     Set-vmhost $VMhost -State Maintenance -Evacuate -VsanDataMigrationMode EnsureAccessibility
 
@@ -62,6 +62,7 @@ foreach($VMhost in $VMhosts)
     Write-host "Exit Maintenance mode"
     Set-VMHost $VMhost -State Connected
     Write-host "Reboot of $vmhost Complete"
+    sleep 60
 }
 
 Write-Host "Script Complete"
